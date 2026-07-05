@@ -1,0 +1,127 @@
+@use "../../scss/base/mixins" as *;
+@use "../../scss/base/variables" as *;
+.portfolio {
+    min-height: 650px;
+    background: $bg-color;
+    padding: 30px 0;
+    &__title {
+        text-align: start;
+        opacity: .1;
+    }
+    &__subtitle {
+        font-size: 23px;
+        opacity: .1;
+    }
+    &__content {
+        position: relative;
+        padding: 20px 0;
+        display: grid;
+        grid-template-columns: minmax(110px, 350px) minmax(430px, 650px);
+        grid-template-rows: 1fr;
+        justify-content: space-between;
+        column-gap: 30px;
+
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        list-style-type: none;
+        padding: 0;
+        margin: 30px 0 0 0;
+        
+        
+    }
+    &__project {
+        display: flex;
+        align-items: center;
+        opacity: .6;
+        margin: 5px 0 5px 30px;
+        &-button {
+            border: none;
+            font-size: 25px;
+            font-weight: normal;
+            &:hover {
+                transition: all .5s;
+                transform: translateX(5px);
+                cursor: pointer;
+            }
+
+        }
+        &.active {
+            opacity: 1;
+            margin: 20px 0;
+            h3 {
+                font-weight: 700;
+            }
+            &::before {
+                content: '>';
+                margin-right: 5px;
+                font-size: 25px;
+            }
+            span {
+                font-weight: bold;
+                font-size: 31px;
+                &:hover {
+                    transform: none;
+                }
+            }
+        }
+       
+    }
+    &__preview {
+        width: 550px;
+        height: 520px;
+        border: 1px solid $border-color;
+        border-radius: 3px;
+        padding: 20px;
+        justify-self: end;
+        &-tech {
+            display: flex;
+            list-style-type: none;
+            margin-top: 5px;
+            &-item {
+                margin-right: 10px;
+                text-transform: uppercase;
+                font-size: 18px;
+                letter-spacing: 1px;
+                opacity: .8;
+                font-weight: normal;
+
+                &:first-child {
+                    list-style-type: none;
+                    &::before {
+                        content: none;
+                    }
+                }
+                &::before {
+                    margin-right: 10px;
+                    content: '/';
+                }
+            }
+
+        }
+        &-descr {
+            margin-top: 15px;
+            font-size: 23px;
+            opacity: .9;
+        }
+        &-img {
+            margin-top: 15px;
+            max-width: 500px;
+            height: 250px;
+            img {
+                border-radius: 6px;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &-links {
+            transition: all 2s;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+       
+    }
+}

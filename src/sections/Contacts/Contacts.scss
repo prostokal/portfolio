@@ -1,0 +1,61 @@
+@use "../../scss/base/mixins" as *;
+@use "../../scss/base/variables" as *;
+.contacts {
+    border-top: 1px solid $border-color;
+    padding: 30px 0;
+    min-height: 400px;
+    background: $bg-color;
+
+    &__subtitle {
+        margin-top: 20px;
+        font-size: 23px;
+    }
+    &__headline {
+        font-size: 31px;
+        text-align: right;
+
+    }
+    &__content {
+        position: relative;
+        margin-top: 15px;
+        display: flex;
+        border: 1px solid $border-color;
+        border-right: 0;
+        border-left: 0;
+        padding: 30px 0;
+        justify-content: space-between;
+        &::after {
+            position: absolute;
+            content: "//////";
+            opacity: .1;
+            top: 50%;
+            right: 50%;
+        }
+    }
+    &__contact {
+        position: relative;
+        width: 280px;
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-link.link{
+            text-transform: none;
+            font-size: 19px;
+            font-weight: 500;
+            opacity: .3;
+        }
+        &::after {
+            content: '>';
+            position: absolute;
+            left: 35%;
+        }
+        &-subtitle {
+            position: relative;
+        }
+        &:first-child {
+            margin: 0;
+        }
+    }   
+    
+}
