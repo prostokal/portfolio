@@ -7,8 +7,10 @@ import backgroundS from '../../assets/img/promo/nnn-small.jpg'
 import gsap from '../../libs/gsap';
 import { useGSAP } from '@gsap/react';
 import { SplitText, ScrollTrigger} from 'gsap/all';
+
+
 export function Promo()  {
-    
+
     useGSAP(() => {
         let split = SplitText.create(".promo__title", { type: "chars"});
         const tl = gsap.timeline();
@@ -22,22 +24,20 @@ export function Promo()  {
                 scrub: true,
             }
         })
-        tl.from(split.chars, {
+        tl.from(".promo__portrait", {
+            opacity: 0,
+            scale: 1.08,
+            duration: 1.2,
+        }).from(split.chars, {
             x: 80,
             opacity: 0,
             duration: 0.7,
             stagger: 0.04,
-        })
-        .from(".promo__portrait", {
-            opacity: 0,
-            scale: 1.08,
-            duration: 1.2,
-        }, "-=.5")
-
+        }, '-=0.5')
         .from(".promo__subtitle", {
             opacity: 0,
             y: 20,
-        })
+        }, '-=0.5')
         .from(".promo__btns", {
             opacity: 0,
             y: 15,

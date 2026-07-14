@@ -11,16 +11,21 @@ import { getProjects } from '../../services/projectServices';
 
 import gsap from '../../libs/gsap';
 import { useGSAP } from '@gsap/react';
-import {fade} from '../../libs/gsap';
+import {fade} from '../../libs/animations';
 
 export function Portfolio() {
     const [projects, setProjects] = useState([]);
     const [projectSelected, setProjectSelected] = useState(0);
 
+
+    useEffect(() => {
+        onRequest();
+    }, []);
+
     useGSAP(() => {
         const tl = gsap.timeline();
         
-        tl.from(".portfolio__preview", {
+        tl.from(".portfolio__content", {
             opacity: 0,
             y: 80,
             scrollTrigger: {
@@ -28,33 +33,29 @@ export function Portfolio() {
                 end: "center 5%",
                 scrub: true,
             }
-        }).from(".portfolio__list", {
-            opacity: 0,
-            y: 80,
-            scrollTrigger: {
-                trigger: ".portfolio",
-                end: "center 5%",
-                duration: 1,
-                scrub: true,  
-            }
         })
     })
    
+    const handleProjectClick = (projectId) => {
+        if (projectSelected === projectId) return;
 
-    useEffect(() => {
-        onRequest();
-    }, []);
+        fade('.portfolio__preview');
+        setProjectSelected(projectId);
+    }
+
     const onRequest = async () => {
         const projects = await getProjects();
         
         setProjects(projects);
     }
+
+
     
     function renderProjectsList(arr) {
         let projects = arr.map((item, i) => {
             return (
                 <li
-                    onClick={() => {setProjectSelected(item.id); fade(".portfolio__preview")}}
+                    onClick={() => {handleProjectClick(item.id)}}
                     className={'portfolio__project' + (projectSelected === item.id ? ' active' : '')}
                     key={item.id}>
                     <span alt={item.title}  tabIndex='0' className="portfolio__project-button">{item.title}</span>
@@ -98,6 +99,7 @@ export function Portfolio() {
 
     const projectList = projects.length > 0 ? renderProjectsList(projects) : null;
     const projectPreview = projects.length > 0 ? renderProjectPreview(projects) : null;
+
     return (
          <section className="portfolio" id="projects">
             <div className="container">

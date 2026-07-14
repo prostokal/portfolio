@@ -31,7 +31,7 @@
         max-width: 720px;
     }
     .promo {
-        padding-top: 115px;
+        padding-top: 70px;
     }
     .about {
         &__title {
@@ -45,18 +45,22 @@
     }
 
     .portfolio {
+
         &__content {
             grid-template-columns: minmax(110px, 380px) minmax(360px, 450px);
         }
         &__preview {
+            min-height: 530px;
             width: 430px;
             &-img {
                 max-width: 100%;
             }
         }
+
     }
     
     .contacts {
+
         &__photo {
             display: none;
         }
@@ -69,6 +73,7 @@
                 right: 30%;
             }
         }
+
     }
 }
 @media (max-width: 768px) {
@@ -84,8 +89,8 @@
   
     .promo {
         min-height: unset;
-        height: 90vh;
-        padding-top: 110px;
+        height: 100vh;
+        padding-top: 50px;
 
         
         &__link {
@@ -94,9 +99,9 @@
         }
         &__portrait {
             top: unset;
-            height: 90%;
             bottom: 0;
         }
+        
     }
     .about {
         min-height: unset;
@@ -124,14 +129,28 @@
    
     .portfolio {
         &__subtitle {
-            margin-top: 0;
+            margin-top: 20px;
             line-height: 25px;
         }
         &__content {
             display: flex;
+            flex-direction: column;
         }
-    
+        &__list {
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 25px;
+        }
+        &__project {
+            &.active {
+                &:before {
+                    left: -20px;
+                }
+                margin: 0 0px;
+            }
+        }
         &__preview {
+            margin-top: 20px;
             width: 100%;
         }
     }
@@ -171,9 +190,9 @@
     }
     
     .promo {
-        height: 90vh;
+        overflow: hidden;
         min-height: unset;
-        padding-top: 20%;
+        padding-top: 8%;
         &__title {
             line-height: 41px;
 
@@ -183,22 +202,19 @@
         }
        
         &__portrait {
-            overflow: hidden;
             bottom: 0;
-            right: -30px;
+            right: -10px;
         }
     }
     .about {
         height: calc(100% + 30px);
-        &__title {
-            font-size: 24px;
-        }
         &__main {
             &::after {
                 display: none;
 
             }
             &-descr {
+                margin-top: 10px;
                 font-size: 23px;
             }
         }
@@ -213,22 +229,23 @@
     .portfolio {
         padding-top: 90px;
         &__list {
-            margin-top: 0;
-            display: none;
-            opacity: 0;
+            margin-top: 15px;
         }
         &__subtitle {
             text-align: right;
         }
         &__project {
             &-button {
-                font-size: 22px;
+                font-size: 17px;
                 
             }
             &.active {
-                margin: 5px 0;
+                margin: 0;
                 span {
-                    font-size: 25px;
+                    font-size: 18px;
+                }
+                &:before {
+                    display: none;
                 }
             }
         }
@@ -237,18 +254,23 @@
             padding: 0;
         }
         &__preview {
+            display: flex;
+            flex-direction: column;
             margin-top: 10px;
             &-img {
-                width: 90%;
+                width: 100%;
                 object-fit: cover;
             }
         }
     }
    
     .contacts {
-        padding-top: 90px;
+        padding: 90px 0 15px 0;
         min-height: unset;
         height: 100%;
+        .container {
+            padding: 0 10px;
+        }
         &__subtitle {
         display: none;
         }
@@ -257,11 +279,14 @@
             font-size: 23px;
         }
         &__content {
-            margin: 0;
             &::after {
                 display: none;
             }
         }
-}
-   
+    }
+    .title {
+        &_fz48{
+            font-size: 30px;
+        }
+    }
 }

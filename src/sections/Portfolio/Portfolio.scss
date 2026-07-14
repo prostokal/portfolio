@@ -33,6 +33,7 @@
         
     }
     &__project {
+        position: relative;
         display: flex;
         align-items: center;
         opacity: .6;
@@ -56,9 +57,11 @@
             }
             &::before {
                 content: '>';
-                margin-right: 5px;
-                font-size: 25px;
-            }
+                position: absolute;
+                font-size: 20px;
+                left: -5%;
+                bottom: 10px;
+            }    
             span {
                 font-weight: bold;
                 font-size: 31px;

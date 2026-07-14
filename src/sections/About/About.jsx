@@ -21,6 +21,26 @@ export function About() {
                 scrub: true,
             }  
         })
+        .from('.about__title', {
+            y: -10,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: ".about",
+                start: "top 60%",
+                end: "bottom center",
+                scrub: true,
+            }
+        }).from('.about__info-descr', {
+            opacity: 0,
+            x: 20,
+            scrollTrigger: {
+                trigger: ".about",
+                start: "top 60%",
+                end: "center 10%",
+                scrub: true,
+            }
+        }, '-=0.5')
+
     })
     
     return (

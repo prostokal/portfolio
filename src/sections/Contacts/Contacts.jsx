@@ -1,7 +1,46 @@
 import '../../scss/blocks/_title.scss';
 import './Contacts.scss';
 
+
+import gsap from '../../libs/gsap';
+import { useGSAP } from '@gsap/react';
+
+
+
 export function Contacts() {
+
+
+    useGSAP(() => {
+        const tl = gsap.timeline();
+        
+        tl.from('.contacts__title', {
+            opacity: 0,
+            x: -80,
+            scrollTrigger: {
+                trigger: ".contacts",
+                end: "center 5%",
+                scrub: true,
+            }
+        }).from('.contacts__content', {
+            opacity: 0,
+            x: -60,
+            scrollTrigger: {
+                trigger: ".contacts",
+                end: "center 5%",
+                scrub: true,
+            }
+        }, '-=0.5').from('.contacts__headline', {
+            opacity: 0,
+            x: 35,
+            scrollTrigger: {
+                trigger: ".contacts",
+                end: "center 5%",
+                scrub: true,
+            }
+        }, '-=0.5')
+    })
+
+
     return (
 
     <footer className="contacts" id="contacts">
