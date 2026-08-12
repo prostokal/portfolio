@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export const lenis = new Lenis({
+    anchors: true,
     wheelMultiplier: 1,
     smoothWheel: true,
     syncTouch: false,

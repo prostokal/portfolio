@@ -35,8 +35,36 @@ useGSAP(() => {
         })
 
     });
+    
+     mm.add("(min-width: 577px) and (max-width: 1024px)", () => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".contacts",
+                start: "top 90%",
+                end: "+=150",
+                scrub: 1.5,
+            },
+        });
 
-    mm.add("(min-width: 577px)", () => {
+        tl.from(".contacts__title", {
+            opacity: 0,
+            x: 30,
+        })
+        .from(".contacts__content", {
+            opacity: 0,
+            x: 15,
+        })
+        .from(".contacts__headline", {
+
+            opacity: 0,
+
+            x: -15,
+
+        });
+
+    });
+
+    mm.add("(min-width: 1025px)", () => {
 
         const tl = gsap.timeline({
             scrollTrigger: {

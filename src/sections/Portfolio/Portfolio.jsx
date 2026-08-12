@@ -101,7 +101,7 @@ export function Portfolio() {
     const projectPreview = projects.length > 0 ? renderProjectPreview(projects) : null;
 
     return (
-         <section className="portfolio" id="projects">
+         <section className="portfolio" id="portfolio">
             <div className="container">
                 <h2 className="portfolio__title title title_fz48">[02]</h2>
                 <h3 className="portfolio__subtitle title">projects</h3>

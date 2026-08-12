@@ -7,6 +7,8 @@ import backgroundS from '../../assets/img/promo/nnn-small.png'
 import {useState, useEffect} from 'react';
 
 import gsap from '../../libs/gsap';
+import { lenis } from '../../libs/lenis';
+
 import { useGSAP } from '@gsap/react';
 import { SplitText, ScrollTrigger} from 'gsap/all';
 
@@ -15,6 +17,14 @@ export function Promo()  {
 
     const [loading, setLoading] = useState(true);
 
+    const scrollTo = (event) => {
+        event.preventDefault();
+
+         const target = event.currentTarget.getAttribute("href");
+
+        lenis.scrollTo(`${target}`, {duration: 2})
+        
+    }
 
     useGSAP(() => {
         let split = SplitText.create(".promo__title", { type: "chars"});
@@ -60,9 +70,10 @@ export function Promo()  {
                     <div className="title title_fz16 promo__subtitle">NIKITA VOLOKHOV</div>
                     <h1 className="title title_fz48 promo__title"> FRONTEND <br /> DEVELOPER</h1>
                     <div className="promo__btns">
-                        <a href="#about" className="promo__link"> <span>[01]</span> ABOUT ME</a>
-                        <a href="#projects" className="promo__link"> <span>[02]</span> PORTFOLIO</a>
-                        <a href="#about" className="promo__link"> <span>[03]</span> contacts</a>
+
+                        <a  href="#about"  onClick={(event) => scrollTo(event)} className="promo__link"> <span>[01]</span> ABOUT ME</a>
+                        <a href="#portfolio" onClick={(event) => scrollTo(event)} className="promo__link"> <span>[02]</span> PORTFOLIO</a>
+                        <a href="#contacts" onClick={(event) => scrollTo(event)} className="promo__link"> <span>[03]</span> contacts</a>
                     </div>
                 </div>
 
