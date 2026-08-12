@@ -2,7 +2,9 @@ import '../../scss/blocks/_title.scss';
 import './Promo.scss';
 
 import backgroundB from '../../assets/img/promo/nnnn.png'
-import backgroundS from '../../assets/img/promo/nnn-small.jpg'
+import backgroundS from '../../assets/img/promo/nnn-small.png'
+
+import {useState, useEffect} from 'react';
 
 import gsap from '../../libs/gsap';
 import { useGSAP } from '@gsap/react';
@@ -11,11 +13,14 @@ import { SplitText, ScrollTrigger} from 'gsap/all';
 
 export function Promo()  {
 
+    const [loading, setLoading] = useState(true);
+
+
     useGSAP(() => {
         let split = SplitText.create(".promo__title", { type: "chars"});
         const tl = gsap.timeline();
     
-        tl.to(".promo__content + .promo__portrait", {
+        tl.to(".promo__content", {
             x: -30,
             opacity: 0,
             scrollTrigger: {
@@ -63,7 +68,7 @@ export function Promo()  {
 
                 <div className="promo__portrait">
                     <picture>
-                        <source media="(max-width: 576px)" srcset={backgroundS}></source>
+                        <source media="(max-width: 992px)" srcSet={backgroundS}></source>
                         <img src={backgroundB} alt="portrait"/>
                     </picture>
                 </div>

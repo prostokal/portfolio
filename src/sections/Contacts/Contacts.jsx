@@ -8,37 +8,63 @@ import { useGSAP } from '@gsap/react';
 
 
 export function Contacts() {
+useGSAP(() => {
+     const mm = gsap.matchMedia();
 
+    mm.add("(max-width: 576px)", () => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".contacts",
+                start: "top 80%",
+                end: "+=210",
+                scrub: 1.5,
+                markers: true,
+            },
+        });
 
-    useGSAP(() => {
-        const tl = gsap.timeline();
-        
-        tl.from('.contacts__title', {
+        tl.from(".contacts__title", {
             opacity: 0,
-            x: -80,
+            x: 30,
+        })
+        .from(".contacts__headline", {
+            opacity: 0,
+            x: -8,
+        }, "+=0.05")
+        .from(".contacts__content", {
+            opacity: 0,
+            y: 8,
+        })
+
+    });
+
+    mm.add("(min-width: 577px)", () => {
+
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".contacts",
-                end: "center 5%",
-                scrub: true,
-            }
-        }).from('.contacts__content', {
+                start: "top 80%",
+                end: "+=250",
+                scrub: 1.5,
+
+            },
+        });
+
+        tl.from(".contacts__title", {
             opacity: 0,
-            x: -60,
-            scrollTrigger: {
-                trigger: ".contacts",
-                end: "center 5%",
-                scrub: true,
-            }
-        }, '-=0.5').from('.contacts__headline', {
+            x: 30,
+        })
+
+        .from(".contacts__headline", {
             opacity: 0,
-            x: 35,
-            scrollTrigger: {
-                trigger: ".contacts",
-                end: "center 5%",
-                scrub: true,
-            }
-        }, '-=0.5')
-    })
+            x: -15,
+        })
+        .from(".contacts__content", {
+            opacity: 0,
+            x: 15,
+        })
+    });
+
+});
 
 
     return (
@@ -52,24 +78,24 @@ export function Contacts() {
             <div className="contacts__content">
                 <ul className="content__list">
                     <li className="contacts__contact">
-                        <a href="#" className=" link contacts__contact-link ">
+                        <a href="" className=" link contacts__contact-link ">
                             Email
                         </a>
-                        <span className="contacts__contact-subtitle">some@gmail.com</span>
+                        <span className="contacts__contact-subtitle">likiroy11@gmail.com</span>
                     </li>
                     
                     <li className="contacts__contact">
-                        <a href="#" className=" link contacts__contact-link ">
+                        <a href="https://github.com/prostokal" className=" link contacts__contact-link ">
                             Github 
                         </a>
-                        <span className="contacts__contact-subtitle">somehub</span>
+                        <span className="contacts__contact-subtitle">prostokal</span>
                     </li>
                     
                     <li className="contacts__contact">
-                        <a href="#" className=" link contacts__contact-link ">
+                        <a href="https://www.linkedin.com/in/retroplus/" className=" link contacts__contact-link ">
                             Linkedin
                         </a>
-                        <span className="contacts__contact-subtitle">someuserdin</span>
+                        <span className="contacts__contact-subtitle">retroplus</span>
                     </li>
                 </ul>
 

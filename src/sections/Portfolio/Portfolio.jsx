@@ -27,7 +27,7 @@ export function Portfolio() {
         
         tl.from(".portfolio__content", {
             opacity: 0,
-            y: 80,
+            y: 90,
             scrollTrigger: {
                 trigger: ".portfolio",
                 end: "center 5%",
