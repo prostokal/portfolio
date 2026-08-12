@@ -18,7 +18,6 @@ useGSAP(() => {
                 start: "top 80%",
                 end: "+=210",
                 scrub: 1.5,
-                markers: true,
             },
         });
 
