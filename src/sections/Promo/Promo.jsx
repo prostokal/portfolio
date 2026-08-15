@@ -1,30 +1,18 @@
 import '../../scss/blocks/_title.scss';
 import './Promo.scss';
 
-import backgroundB from '../../assets/img/promo/nnnn.png'
-import backgroundS from '../../assets/img/promo/nnn-small.png'
+import backgroundB from '../../assets/img/promo/nnnn.webp'
+import backgroundS from '../../assets/img/promo/nnn-small.webp'
 
 import {useState, useEffect} from 'react';
 
 import gsap from '../../libs/gsap';
-import { lenis } from '../../libs/lenis';
+import { lenis, scrollTo} from '../../libs/lenis';
 
 import { useGSAP } from '@gsap/react';
 import { SplitText, ScrollTrigger} from 'gsap/all';
 
-
 export function Promo()  {
-
-    const [loading, setLoading] = useState(true);
-
-    const scrollTo = (event) => {
-        event.preventDefault();
-
-         const target = event.currentTarget.getAttribute("href");
-
-        lenis.scrollTo(`${target}`, {duration: 2})
-        
-    }
 
     useGSAP(() => {
         let split = SplitText.create(".promo__title", { type: "chars"});
@@ -61,30 +49,28 @@ export function Promo()  {
         })
         return () => split.revert();
     })
-
-   return (
+    return (
         <section className="promo">
-            <div className="container">
-                
-                <div className="promo__content">
-                    <div className="title title_fz16 promo__subtitle">NIKITA VOLOKHOV</div>
-                    <h1 className="title title_fz48 promo__title"> FRONTEND <br /> DEVELOPER</h1>
-                    <div className="promo__btns">
-
-                        <a  href="#about"  onClick={(event) => scrollTo(event)} className="promo__link"> <span>[01]</span> ABOUT ME</a>
-                        <a href="#portfolio" onClick={(event) => scrollTo(event)} className="promo__link"> <span>[02]</span> PORTFOLIO</a>
-                        <a href="#contacts" onClick={(event) => scrollTo(event)} className="promo__link"> <span>[03]</span> contacts</a>
-                    </div>
+        <div className="container">
+            
+            <div className="promo__content">
+                <div className="title title_fz16 promo__subtitle">NIKITA VOLOKHOV</div>
+                <h1 className="title title_fz48 promo__title"> FRONTEND <br /> DEVELOPER</h1>
+                <div className="promo__btns">
+                    <a href="#about"  onClick={(event) => scrollTo(event)} className="promo__link"> <span>[01]</span> ABOUT ME</a>
+                    <a href="#portfolio" onClick={(event) => scrollTo(event)} className="promo__link"> <span>[02]</span> PORTFOLIO</a>
+                    <a href="#contacts" onClick={(event) => scrollTo(event)} className="promo__link"> <span>[03]</span> contacts</a>
                 </div>
-
-                <div className="promo__portrait">
-                    <picture>
-                        <source media="(max-width: 992px)" srcSet={backgroundS}></source>
-                        <img src={backgroundB} alt="portrait"/>
-                    </picture>
-                </div>
-
             </div>
-        </section>
+
+            <div className="promo__portrait">
+                <picture>
+                    <source media="(max-width: 992px)" srcSet={backgroundS}></source>
+                    <img src={backgroundB} alt="portrait"/>
+                </picture>
+            </div>
+
+        </div>
+    </section>
     )
 }

@@ -16,3 +16,10 @@ gsap.ticker.add((time) => {
 });
 
 gsap.ticker.lagSmoothing(0);
+
+export const scrollTo = (event) => {
+    event.preventDefault();
+    const target = event.currentTarget.getAttribute("href");
+
+    lenis.scrollTo(`${target}`, {duration: 2})
+}
